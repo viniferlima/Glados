@@ -12,6 +12,8 @@
 
 ##### O que esse tal Glados faz?
 
+Glados é um projeto de Web bot que será capaz de coletar dados de produtos variados a fim de mensurar a evolução de seu preço e comparando-o em diferentes sites com o intuito de dar ao publico alvo a change de pesquisar antes de realizar uma compra.
+
 ### Integrantes:
 
 :computer: André Luiz Dias Custodio <br>
