@@ -1,4 +1,4 @@
-<div align="center">
+﻿<div align="center">
     <img src="./glados.png" width="320" />
     <div height="50"></div>
 </div>
@@ -36,3 +36,19 @@ Clientes de e-commerce que visam a econômia e praticidade ao realizar suas comp
 :computer: Luciano Donizetti <br>
 :computer: Perilo <br>
 :computer: Vinícius <br>
+
+
+# Como salvar os aquivos:
+Primeiro crie uma pasta na sua area de trabalho, esta será a pasta que voce usará como servidor local do seu Git.<br>
+Dentro da pasta clique com o botao direito e selecione a opção Git Bash Here, isto irá abrir o console do Git com a base nesta pasta.<br>
+No console use o comando "git config --global user.email" para logar no seu gitbash, use o email cadastrado no GitLab.<br>
+Também cadastre seu nome com "git config --global user.name".<br>
+No GitLab procura o botão clone e copie a opção “Clone with HTTPS”.<br>
+Novamente no console use o comando “git clone” e cole (Ctrl + V não funciona, use o botao direito + colar ou shift + botão insert).<br>
+Após clonarem ira ser criada uma pasta webbot dentro da pasta Git, usem o comando “cd webbot” para selecionarem a pasta e a usarem.<br>
+Por enquanto ainda estamos na Branch master, vamos mudar para a develop para caso ocorram erros não haja tanto problema. Use o comando “git checkout” e digite a branch escolhida, por exemplo develop.<br>
+Em seguida use o comando “git pull” para puxar os arquivos do GitLab para a sua pasta local.<br>
+Após modificar um arquivo para retorna-lo ao gitlab use o comando “git add” para selecionar um arquivo.<br>
+Depois de ter adicionado um arquivo na “lista de espera” do git use o comando ‘git commit –m “” ‘ para salvar o arquivo na sua pasta Git/webbot. É obrigatoria uma mensagem entre as aspas após o –m.<br>
+Agora que o arquivo ja esta salvo na sua maquina basta envia-lo novamente ao gitlab, use o comando “git push” para empurrar o arquivo, adicione o comando “origin develop” para direcionar o arquivo para a branch develop.<br>
+Pronto seu arquivo foi enviado.<br>
