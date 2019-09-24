@@ -16,9 +16,10 @@ doc = lxml.html.fromstring(res.content)
 corpo = doc.xpath('//*[@id="dp"]')[0]
 
 nome_produto = corpo.xpath('.//*[@id="productTitle"]/text()')
-print(nome_produto.split('\n'))
+separador = ""
+separador = separador.join(nome_produto)
 
 preco_produto = corpo.xpath('.//*[@id="priceblock_ourprice"]/text()')
 
-print('Nome: ', nome_produto)
+print('Nome: ', separador.strip())
 print('Preco: ', preco_produto)
