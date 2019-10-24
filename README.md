@@ -38,7 +38,7 @@ Clientes de e-commerce que visam a econômia e praticidade ao realizar suas comp
 :computer: Vinícius <br>
 
 
-# O quê estamos usando 🤔
+# O que estamos usando? 🤔
 
 Estamos usando a linguagem de programação hibrida Python, escolhemos esta linguagem pois é a mais completa em questão de bibliotecas e afins usados para a raspagem de dados.<br>
 Estamos tambem usando a as bibliotecas requests, lxml, pymsql e schedule para, respectivamente, fazer a conexão com o site a ser raspado, raspar o site, fazer a conexão com o banco e repetir o processo periodicamente.<br>
