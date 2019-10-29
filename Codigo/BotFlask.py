@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import jsonify
 app = Flask(__name__)
 
 @app.route('/')
@@ -13,6 +14,7 @@ def BotFlask():
     import time #  
     #import xlsxwriter # pip3 install xlsxwriter
     import pymysql # pip3 install pymysql 
+
 
     busca = "sonata" #input("Digite o nome do produto: ")
     link = ('https://www.amazon.com.br/s?k=ProdutoPesquisado&__mk_pt_BR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&ref=nb_sb_noss')
@@ -106,7 +108,7 @@ def BotFlask():
 
                 connection = pymysql.connect(host="localhost", user="root", passwd="", database="glados")
                 cursor = connection.cursor()
-                insert1 = "INSERT INTO produtos(nome, categoria, preco_cheio, preco_desconto, porcentagem_desconto, site, disponibilidade) VALUES ('{}', '{}', {}, {}, {}, '{}', '{}');".format(nome, cat, fup, price, desconto, dominio, disp)
+                insert1 = "INSERT INTO produtos(nome, categoria, preco_cheio, preco_desconto, porcentagem_desconto, site, disponibilidade, img) VALUES ('{}', '{}', {}, {}, {}, '{}', '{}', '{}');".format(nome, cat, fup, price, desconto, dominio, disp, img)
                 print("Código SQL para consulta: ")
                 print(insert1)
                 print()
@@ -141,6 +143,7 @@ def BotFlask():
 
     search()
 
-    return "json?"
+    
+    return jsonify()
 
 

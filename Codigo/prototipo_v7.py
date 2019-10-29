@@ -5,7 +5,7 @@ from datetime import datetime # pip3 install datetime
 import re # 
 import schedule # pip3 install schedule
 import time #  
-import xlsxwriter # pip3 install xlsxwriter
+#import xlsxwriter # pip3 install xlsxwriter
 import pymysql # pip3 install pymysql 
 
 busca = input("Digite o nome do produto: ")
@@ -100,7 +100,7 @@ def track(url):
 
             connection = pymysql.connect(host="localhost", user="root", passwd="", database="glados")
             cursor = connection.cursor()
-            insert1 = "INSERT INTO produtos1(nome, categoria, preco, preco_desconto, porcentagem_desconto, site, disponivel) VALUES ('{}', '{}', {}, {}, {}, '{}', '{}');".format(nome, cat, fup, price, desconto, dominio, disp)
+            insert1 = "INSERT INTO produtos(nome, categoria, preco_cheio, preco_desconto, porcentagem_desconto, site, disponibilidade, imagem) VALUES ('{}', '{}', {}, {}, {}, '{}', '{}', '{}');".format(nome, cat, fup, price, desconto, dominio, disp, img)
             print("Código SQL para consulta: ")
             print(insert1)
             print()
