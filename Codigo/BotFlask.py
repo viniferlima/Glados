@@ -1,28 +1,44 @@
+import requests # pip3 install requests
+import lxml # pip3 install lxml
+from lxml import html
+from datetime import datetime # pip3 install datetime
+import re # 
+import schedule # pip3 install schedule
+import time #  
+import pymysql # pip3 install pymysql 
 from flask import Flask
 from flask import jsonify
 app = Flask(__name__)
 
 @app.route('/')
 def BotFlask():
-    
-    import requests # pip3 install requests
-    import lxml # pip3 install lxml
-    from lxml import html
-    from datetime import datetime # pip3 install datetime
-    import re # 
-    import schedule # pip3 install schedule
-    import time #  
-    #import xlsxwriter # pip3 install xlsxwriter
-    import pymysql # pip3 install pymysql 
 
-
-    busca = "sonata" #input("Digite o nome do produto: ")
+    busca = "Batman" #input("Digite o nome do produto: ")
     link = ('https://www.amazon.com.br/s?k=ProdutoPesquisado&__mk_pt_BR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&ref=nb_sb_noss')
     url = link.replace("ProdutoPesquisado",busca.strip())
-    res = requests.get(url, headers={'user-agent': 'glados'})
     errors = []
 
+
     def track(url):
+
+        #request xml e organização dos dados
+        res = requests.get(url, headers={'user-agent': 'glados'})
+        doc = lxml.html.fromstring(res.content)
+        corpo = doc.xpath('//*[@class="sg-row"]')[0]
+        separador = "\n"
+        link_produto = corpo.xpath('//*[@id="search"]/div[1]/div[2]/div/span[3]/div[1]/div[*]/div/span/div/div/div[2]/div[2]/div/div[1]/div/div/div[1]/h2/a/@href')
+        link_site = separador.join(link_produto)
+        z = link_site.split("\n")
+        qtde = len(z)
+        i = 0
+        urls = []
+
+        #isto??
+        while(i < qtde):
+            path = str('https://www.amazon.com.br' + z[i])
+            urls.append(path)
+            i = 1 + i
+
         x = url.split(".")
         # Trocar user-agent pelo da sua máquina (Google -> my user agent)
         res = requests.get(url, headers={'user-agent':'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.70 Safari/537.36'})
@@ -30,6 +46,12 @@ def BotFlask():
             print('Sem conexão! :c')
         else:    
             try:
+
+                #for url in urls: 
+                #    track(url)
+                #else:
+                #    print("Finalizado.")
+
                 doc = html.fromstring(res.content)
 
                 separador = ""
@@ -41,14 +63,19 @@ def BotFlask():
                     dominio = "Submarino"
                 if(x[1] == "saraiva"):
                     dominio = "Saraiva"
+                
 
                 # Nome do produto
                 nome_produto = doc.xpath('.//*[@id="productTitle"]/text()')
                 nome = separador.join(nome_produto).strip()
 
+                print(nome)
+
                 # Categoria do produto
                 categoria = doc.xpath('.//*[@id="wayfinding-breadcrumbs_feature_div"]/ul/li[1]/span/a/text()')
                 cat = separador.join(categoria).strip()
+
+                print(cat)
 
                 # Preço cheio do produto
                 fullprice = doc.xpath('.//*[@id="buyBoxInner"]/ul/li[1]/span/span[2]/text()')
@@ -58,6 +85,8 @@ def BotFlask():
                 fullp2 = separador.join(fullprice2)
                 
                 semdesc = fullp or fullp2
+
+                print(semdesc)
                 #semdesc = separador.join(fullprice_final)
 
                 # Preço atual do produto
@@ -66,28 +95,43 @@ def BotFlask():
                 preco_produto3 = doc.xpath('.//*[@id="unqualifiedBuyBox"]/div/div[1]/span/text()')
                 preco_produto4 = doc.xpath('.//*[@id="priceblock_ourprice"]/text()')
                 
+                
+
                 preco = separador.join(preco_produto)
                 preco2 = separador.join(preco_produto2)
                 preco3 = separador.join(preco_produto3)
                 preco4 = separador.join(preco_produto4)
+
+                
                 
                 price = preco.strip() or preco2.strip() or preco3.strip() or preco4.strip()
                 if (semdesc > preco or semdesc > preco2 or semdesc > preco3 or semdesc > preco4):
                     fup = semdesc.strip()
                 else:
                     fup = preco.strip() or preco2.strip() or preco3.strip() or preco4.strip()
-
+                
+                
+                #quebra aqui pois price n recebe nd
                 price = price.replace("R$", "").replace(",", ".")
+                print(price)
                 price = float(price)
+                print("checkPrecoAt2")
                 fup = fup.replace("R$", "").replace(",",".")
+                print("checkPrecoAt3")
                 fup = float(fup)
+
+                print("checkPrecoAt4")
 
                 # Desconto em %
                 desconto = "%.2f" % round(((1 - (price/fup))*100),2)
 
+                print("checkDesc")
+
                 # Disponibilidade do produto
                 av = doc.xpath('.//*[@id="availability"]/span/text()')
                 disp = separador.join(av).strip()
+
+                print("checkDisp")
 
                 # Data da consulta
                 data_atual = datetime.today()
@@ -95,6 +139,9 @@ def BotFlask():
 
                 img = doc.xpath('.//*[@id="imgBlkFront"]/@data-a-dynamic-image')
 
+                print("checkData")
+
+                #checagem de dados
                 print()
                 print('Nome: ', nome)
                 print('Categoria: ', cat)
@@ -106,9 +153,10 @@ def BotFlask():
                 print("Disponibilidade: ", disp)
                 print(img)
 
+                #parte do banco
                 connection = pymysql.connect(host="localhost", user="root", passwd="", database="glados")
                 cursor = connection.cursor()
-                insert1 = "INSERT INTO produtos(nome, categoria, preco_cheio, preco_desconto, porcentagem_desconto, site, disponibilidade, img) VALUES ('{}', '{}', {}, {}, {}, '{}', '{}', '{}');".format(nome, cat, fup, price, desconto, dominio, disp, img)
+                insert1 = "INSERT INTO produtos(nome, categoria, preco_cheio, preco_desconto, porcentagem_desconto, site, disponibilidade, imagem) VALUES ('{}', '{}', {}, {}, {}, '{}', '{}', '{}');".format(nome, cat, fup, price, desconto, dominio, disp, img)
                 print("Código SQL para consulta: ")
                 print(insert1)
                 print()
@@ -118,32 +166,14 @@ def BotFlask():
             except:
                 errors.append(url)
 
+        
+        dados ={
+            "nome": nome,
+            "categoria": categoria,
+            }
 
-    doc = lxml.html.fromstring(res.content)
-    corpo = doc.xpath('//*[@class="sg-row"]')[0]
-    separador = "\n"
-    link_produto = corpo.xpath('//*[@id="search"]/div[1]/div[2]/div/span[3]/div[1]/div[*]/div/span/div/div/div[2]/div[2]/div/div[1]/div/div/div[1]/h2/a/@href')
-    link_site = separador.join(link_produto)
-    z = link_site.split("\n")
-    qtde = len(z)
-    i = 0
+        return dados
 
-    urls = []
+    dados = track(url)
 
-    while(i < qtde):
-        path = str('https://www.amazon.com.br' + z[i])
-        urls.append(path)
-        i = 1 + i
-
-    def search():
-        for url in urls: 
-            track(url)
-        else:
-            print("Finalizado.")
-
-    search()
-
-    
-    return jsonify()
-
-
+    return jsonify(dados)
