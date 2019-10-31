@@ -29,6 +29,12 @@ Glados tem como objeto proporcionar uma economia financeira e satisfação pesso
 
 Clientes de e-commerce que visam a econômia e praticidade ao realizar suas compras on-line e clientes que monitoram suas listas de desejos para realizarem a compra no preço mais baixo.
 
+#O que estamos usando?:thinking:
+
+Estamos usando a linguagem de programação hibrida Python, escolhemos esta linguagem pois é a mais completa em questão de bibliotecas e afins usados para a raspagem de dados.<br>
+Estamos tambem usando a as bibliotecas requests, lxml, pymsql e schedule para, respectivamente, fazer a conexão com o site a ser raspado, raspar o site, fazer a conexão com o banco e repetir o processo periodicamente.<br>
+Como servidor local para o banco de dados estamos usando o XAMPP que possui um modulo Apache e MySQL usados para suportar o banco de dados e front-end web.<br>
+
 # Integrantes:
 
 :computer: André Luiz Dias Custodio <br>
@@ -38,8 +44,4 @@ Clientes de e-commerce que visam a econômia e praticidade ao realizar suas comp
 :computer: Vinícius <br>
 
 
-# O que estamos usando? 🤔
 
-Estamos usando a linguagem de programação hibrida Python, escolhemos esta linguagem pois é a mais completa em questão de bibliotecas e afins usados para a raspagem de dados.<br>
-Estamos tambem usando a as bibliotecas requests, lxml, pymsql e schedule para, respectivamente, fazer a conexão com o site a ser raspado, raspar o site, fazer a conexão com o banco e repetir o processo periodicamente.<br>
-Como servidor local para o banco de dados estamos usando o XAMPP que possui um modulo Apache e MySQL usados para suportar o banco de dados e front-end web.<br>
