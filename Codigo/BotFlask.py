@@ -10,51 +10,50 @@ from flask import Flask
 from flask import jsonify
 app = Flask(__name__)
 
-@app.route('/')
-def BotFlask():
-
-    busca = "Batman" #input("Digite o nome do produto: ")
-    link = ('https://www.amazon.com.br/s?k=ProdutoPesquisado&__mk_pt_BR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&ref=nb_sb_noss')
-    url = link.replace("ProdutoPesquisado",busca.strip())
-    errors = []
+busca = "Batman" #input("Digite o nome do produto: ")
+link = ('https://www.amazon.com.br/s?k=ProdutoPesquisado&__mk_pt_BR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&ref=nb_sb_noss')
+url = link.replace("ProdutoPesquisado",busca.strip())
+errors = []
 
 
-    def track(url):
+def track(url):
 
-        #request xml e organização dos dados
-        res = requests.get(url, headers={'user-agent': 'glados'})
-        doc = lxml.html.fromstring(res.content)
-        corpo = doc.xpath('//*[@class="sg-row"]')[0]
-        separador = "\n"
-        link_produto = corpo.xpath('//*[@id="search"]/div[1]/div[2]/div/span[3]/div[1]/div[*]/div/span/div/div/div[2]/div[2]/div/div[1]/div/div/div[1]/h2/a/@href')
-        link_site = separador.join(link_produto)
-        z = link_site.split("\n")
-        qtde = len(z)
-        i = 0
-        urls = []
+    #request xml e organização dos dados
+    res = requests.get(url, headers={'user-agent': 'glados'})
+    doc = lxml.html.fromstring(res.content)
+    corpo = doc.xpath('//*[@class="sg-row"]')[0]
+    separador = "\n"
+    link_produto = corpo.xpath('//*[@id="search"]/div[1]/div[2]/div/span[3]/div[1]/div[*]/div/span/div/div/div[2]/div[2]/div/div[1]/div/div/div[1]/h2/a/@href')
+    link_site = separador.join(link_produto)
+    z = link_site.split("\n")
+    qtde = len(z)
+    i = 0
+    urls = []
 
-        #isto??
-        while(i < qtde):
-            path = str('https://www.amazon.com.br' + z[i])
-            urls.append(path)
-            i = 1 + i
+    #array de url para busca de pagina completa
+    while(i < qtde):
+        path = str('https://www.amazon.com.br' + z[i])
+        urls.append(path)
+        i = 1 + i
+        #print("check while")
 
-        x = url.split(".")
-        # Trocar user-agent pelo da sua máquina (Google -> my user agent)
-        res = requests.get(url, headers={'user-agent':'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.70 Safari/537.36'})
-        while(res.status_code == 503):
-            print('Sem conexão! :c')
-        else:    
-            try:
-
-                #for url in urls: 
-                #    track(url)
-                #else:
-                #    print("Finalizado.")
+    x = url.split(".")
+    # Trocar user-agent pelo da sua máquina (Google -> my user agent)
+    res = requests.get(url, headers={'user-agent':'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.70 Safari/537.36'})
+    while(res.status_code == 503):
+        print('Sem conexão! :c')
+    else:    
+        try:
+            #print("check try")
+            #pega todos os produtos da pagina
+            for url in urls: 
+                print(url)            
 
                 doc = html.fromstring(res.content)
 
                 separador = ""
+
+                print("check 1")
 
                 # Site pesquisado
                 if(x[1] == "amazon"):
@@ -64,18 +63,22 @@ def BotFlask():
                 if(x[1] == "saraiva"):
                     dominio = "Saraiva"
                 
+                print("check 2")
+                print(dominio)
 
                 # Nome do produto
                 nome_produto = doc.xpath('.//*[@id="productTitle"]/text()')
                 nome = separador.join(nome_produto).strip()
 
                 print(nome)
+                print("check 3")
 
                 # Categoria do produto
                 categoria = doc.xpath('.//*[@id="wayfinding-breadcrumbs_feature_div"]/ul/li[1]/span/a/text()')
                 cat = separador.join(categoria).strip()
 
                 print(cat)
+                print("check 4")
 
                 # Preço cheio do produto
                 fullprice = doc.xpath('.//*[@id="buyBoxInner"]/ul/li[1]/span/span[2]/text()')
@@ -87,6 +90,7 @@ def BotFlask():
                 semdesc = fullp or fullp2
 
                 print(semdesc)
+                print("check 5")
                 #semdesc = separador.join(fullprice_final)
 
                 # Preço atual do produto
@@ -95,14 +99,14 @@ def BotFlask():
                 preco_produto3 = doc.xpath('.//*[@id="unqualifiedBuyBox"]/div/div[1]/span/text()')
                 preco_produto4 = doc.xpath('.//*[@id="priceblock_ourprice"]/text()')
                 
-                
+                print("check 6")
 
                 preco = separador.join(preco_produto)
                 preco2 = separador.join(preco_produto2)
                 preco3 = separador.join(preco_produto3)
                 preco4 = separador.join(preco_produto4)
 
-                
+                print("check 7")
                 
                 price = preco.strip() or preco2.strip() or preco3.strip() or preco4.strip()
                 if (semdesc > preco or semdesc > preco2 or semdesc > preco3 or semdesc > preco4):
@@ -110,16 +114,17 @@ def BotFlask():
                 else:
                     fup = preco.strip() or preco2.strip() or preco3.strip() or preco4.strip()
                 
+                print("check 8")
                 
-                #quebra aqui pois price n recebe nd
                 price = price.replace("R$", "").replace(",", ".")
                 print(price)
+                print("checkPrecoAt1")
+                #ainda quebrando aqui, passando nulo para float(?)
                 price = float(price)
                 print("checkPrecoAt2")
                 fup = fup.replace("R$", "").replace(",",".")
                 print("checkPrecoAt3")
                 fup = float(fup)
-
                 print("checkPrecoAt4")
 
                 # Desconto em %
@@ -163,16 +168,22 @@ def BotFlask():
                 cursor.execute(insert1)
                 connection.commit()
                 connection.close()
-            except:
-                errors.append(url)
 
-        
-        dados ={
-            "nome": nome,
-            "categoria": categoria,
-            }
+            else:
+                print("Finalizado.")
 
-        return dados
+        except:
+            errors.append(url)
+            
+
+
+
+    dados ="a"
+
+    return dados
+
+@app.route('/')
+def BotFlask():
 
     dados = track(url)
 
