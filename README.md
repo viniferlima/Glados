@@ -35,6 +35,21 @@ Estamos usando a linguagem de programação Python, escolhemos esta linguagem po
 Estamos tambem usando a as bibliotecas requests, lxml, pymsql e schedule para, respectivamente, fazer a conexão com o site a ser raspado, raspar o site, fazer a conexão com o banco e repetir o processo periodicamente.<br>
 Para servidor Web local utilizamos uma plataforma a XAMPP que proporciona uma plataforma de testes, sendo que o mesmo oferece um modulo Apache e MySQL usados para supotar o banco de dados na maquina local.<br>
 
+### Como usar:
+
+Para o uso da aplicação e necessario instalar alguns programas e suas extensões:
+1º Deste modo iniciamos com baixando o interpretador de python, para isso, é necessario abrir o navegador (que usa diariamente) podendo pesquisar pelo google, buscando por pyCharm,
+logo após os resultados, selecione o primeiro resultado da pesquisa, que por consequencia abrira a pagina da JET BRAINS já nesta pagina você encotrara um botão escrito download,
+após feito o carregamento da pagina selecione o tipo de sistema operacional (Windows, Linux ou macOS), porem o site ja reconhece o do seu computador sistema operacinal,
+para iniciar o download clique no botão download abaixo de Community assim ele ja inicializara o download. <br>
+2º instalando PyCharm <br>
+    Assim que finalizar o download, abra o arquivo "pycharm-community-2019.2.4.exe" que executara o instalador. Na tela de boas-vindas, clique no botão NEXT, iniciando o processo de
+instalação, na proxima tela ira abrir uma caixa de seleção para poder selecionar o local de instalação do software, normalmente e aceito o local já sugerido e apenas clicamos novamente em NEXT.<br>
+Na proxima janela de instalação você podera escolher algumas opções de instalação, sendo elas criar um atalho na área de trabalho e criar associações com arquivos .py, por opcão marque ambas as
+opções e em seguida clique novamente em NEXT.<br>
+Na janela seguinte sera necessario escolher uma pasta do menu iniciar para o programa. É recomendavel deixar a opção padrão e clique em INSTALL para iniciar a instalação do software.<br>
+
+
 # Integrantes:
 
 :computer: André Luiz Dias Custodio <br>
