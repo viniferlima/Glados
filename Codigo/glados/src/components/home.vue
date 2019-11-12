@@ -1,42 +1,41 @@
-<?php
-include("includes/topo.php");
-?>
-<div class="slider-area">
+<template>
+	<div id="home">
+			<div class="slider-area">
         	<!-- Slider -->
 			<div class="block-slider block-slider4">
 				<ul class="" id="bxslider-home4">
 					<li>
-						<img src="img/h4-slide.png" alt="Slide" style = "max-height:250px; width: auto;">
+						<img src="./src/img/h4-slide.png" alt="Slide" style = "max-height:250px; width: auto;">
 						<div class="caption-group">
 							<h2 class="caption title">
 								Sonic <span class="primary">Brinquedo <strong>Amazon</strong></span>
 							</h2>
 							<h4 class="caption subtitle">R$ 100,00</h4>
-							<a class="caption button-radius" href="#"><span class="icon"></span>Compre j·!</a>
+							<a class="caption button-radius" href="#"><span class="icon"></span>Compre j√°!</a>
 						</div>
 					</li>
-					<li><img src="img/h4-slide2.png" alt="Slide" style = "max-height:250px; width: auto;">
+					<li><img src="./src/img/h4-slide2.png" alt="Slide" style = "max-height:250px; width: auto;">
 						<div class="caption-group">
 							<h2 class="caption title">
 								BATMAN: Piada Mortal <span class="primary">Livros <strong>Amazon</strong></span>
 							</h2>
 							<h4 class="caption subtitle">R$ 49,00</h4>
-							<a class="caption button-radius" href="#"><span class="icon"></span>Compre j·!</a>
+							<a class="caption button-radius" href="#"><span class="icon"></span>Compre j√°!</a>
 						</div>
 					</li>
-					<li><img src="img/h4-slide3.png" alt="Slide" style = "max-height:250px; width: auto;">
+					<li><img src="./src/img/h4-slide3.png" alt="Slide" style = "max-height:250px; width: auto;">
 						<div class="caption-group">
 							<h2 class="caption title">
 								PORTAL 2 <span class="primary">Entretenimento <strong>Amazon</strong></span>
 							</h2>
 							<h4 class="caption subtitle">SR$ 79,00</h4>
-							<a class="caption button-radius" href="#"><span class="icon"></span>Compre j·!</a>
+							<a class="caption button-radius" href="#"><span class="icon"></span>Compre j√°!</a>
 						</div>
 					</li>
-					<li><img src="img/h4-slide4.png" alt="Slide" style = "max-height:250px; width: auto;">
+					<li><img src="./src/img/h4-slide4.png" alt="Slide" style = "max-height:250px; width: auto;">
 						<div class="caption-group">
 						  <h2 class="caption title">
-								All Star <span class="primary">CalÁados <strong>Amazon</strong></span>
+								All Star <span class="primary">Cal√ßados <strong>Amazon</strong></span>
 							</h2>
 							<h4 class="caption subtitle">R$ 120,00</h4>
 							<a class="caption button-radius" href="#"><span class="icon"></span>Comprar agora</a>
@@ -91,7 +90,7 @@ include("includes/topo.php");
                         <div class="product-carousel">
                             <div class="single-product">
                                 <div class="product-f-image">
-                                    <img src="img/product-1.jpg" alt="">
+                                    <img src="./srcimg/product-1.jpg" alt="">
                                     <div class="product-hover">
                                         <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Visitar site</a>
                                         <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> Ver detalhes</a>
@@ -106,7 +105,7 @@ include("includes/topo.php");
                             </div>
                             <div class="single-product">
                                 <div class="product-f-image">
-                                    <img src="img/product-2.jpg" alt="">
+                                    <img src="./src/img/product-2.jpg" alt="">
                                     <div class="product-hover">
                                         <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Visitar site</a>
                                         <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> Ver detalhes</a>
@@ -120,7 +119,7 @@ include("includes/topo.php");
                             </div>
                             <div class="single-product">
                                 <div class="product-f-image">
-                                    <img src="img/product-3.jpg" alt="">
+                                    <img src="./src/img/product-3.jpg" alt="">
                                     <div class="product-hover">
                                         <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Visitar site</a>
                                         <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> Ver detalhes</a>
@@ -135,7 +134,7 @@ include("includes/topo.php");
                             </div>
                             <div class="single-product">
                                 <div class="product-f-image">
-                                    <img src="img/product-4.jpg" alt="">
+                                    <img src="./src/img/product-4.jpg" alt="">
                                     <div class="product-hover">
                                         <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Visitar site</a>
                                         <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> Ver detalhes</a>
@@ -150,7 +149,7 @@ include("includes/topo.php");
                             </div>
                             <div class="single-product">
                                 <div class="product-f-image">
-                                    <img src="img/product-5.jpg" alt="">
+                                    <img src="./src/img/product-5.jpg" alt="">
                                     <div class="product-hover">
                                         <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Visitar site</a>
                                         <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> Ver detalhes</a>
@@ -165,7 +164,7 @@ include("includes/topo.php");
                             </div>
                             <div class="single-product">
                                 <div class="product-f-image">
-                                    <img src="img/product-6.jpg" alt="">
+                                    <img src="./src/img/product-6.jpg" alt="">
                                     <div class="product-hover">
                                         <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Visitar site</a>
                                         <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> Ver detalhes</a>
@@ -184,8 +183,21 @@ include("includes/topo.php");
             </div>
         </div>
     </div> <!-- End main content area -->
-<?php
-include("includes/rodape.php");
-?>
+	</div>
+</template>
 
-    
+<script>
+export default {
+  name: 'home',
+  data () {
+    return {
+      msg: 'Welcome to Your Vue.js App'
+    }
+  }
+}
+
+</script>
+
+<style>
+
+</style>
