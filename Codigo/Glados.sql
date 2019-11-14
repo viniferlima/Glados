@@ -1,20 +1,18 @@
-
 --cria tabela
 create database glados
 
 --cria tabela produtos
 CREATE TABLE `produtos` (
   `id` int(11) NOT NULL,
-  `nome` varchar(50) DEFAULT NULL,
-  `categoria` varchar(50) DEFAULT NULL,
-  `preco` double DEFAULT NULL,
+  `nome` varchar(1000) DEFAULT NULL,
+  `categoria` varchar(1000) DEFAULT NULL,
+  `preco_cheio` double DEFAULT NULL,
   `preco_desconto` double DEFAULT NULL,
   `porcentagem_desconto` float DEFAULT NULL,
-  `data_consulta` datetime DEFAULT NULL,
-  `site` varchar(50) DEFAULT NULL,
-  `disponivel` varchar(50) DEFAULT NULL,
-  `imagem` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `data_consulta` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `site` varchar(1000) DEFAULT NULL,
+  `disponibilidade` varchar(1000) DEFAULT NULL
+)ENGINE=INNODB DEFAULT CHARSET=latin1;
 
 
 --altera tabela adicionando chave primaria
