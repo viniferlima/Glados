@@ -1,5 +1,5 @@
 {
-  "name": "glados",
+  "name": "cls",
   "version": "0.1.0",
   "description": "spa vue",
   "author": "Perilo",
@@ -21,7 +21,10 @@
     "vue": "vue/dist/vue.common.js"
   },
   "dependencies": {
-    "vue": "^2.0.1",
+    "axios": "^0.19.0",
+    "cli": "^1.0.1",
+    "clie": "^0.2.0",
+    "vue": "^2.6.10",
     "vue-owl-carousel": "^2.0.3"
   },
   "devDependencies": {
@@ -46,5 +49,7 @@
     "uglify-js": "^2.5.0",
     "vueify": "^9.0.0",
     "watchify": "^3.4.0"
-  }
+  },
+  "main": "karma.conf.js",
+  "license": "ISC"
 }

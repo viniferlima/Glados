@@ -43,11 +43,8 @@
 						</div> 
 						<div class="navbar-collapse collapse">
 							<ul class="nav navbar-nav">
-								<li class="active"><a href="/#/">Menu1</a></li>
-								<li><a href="#">Menu2</a></li>
-								<li><a href="#">Menu3</a></li>
-								<li><a href="#">Menu4</a></li>
-								<li><a href="#">Menu5</a></li>
+								<li class="active"><a href="/#/">Home</a></li>
+								<li><a href="#">Produtos</a></li>
 								<li>
 									<div style="width:450px; margin-left:50%;">
 										<input type="text" class="form-control" placeholder="O que deseja procurar?" style="width: 100%;">
