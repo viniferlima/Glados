@@ -5,19 +5,29 @@ from datetime import datetime # pip3 install datetime
 import re # 
 import schedule # pip3 install schedule
 import time #  
-import xlsxwriter # pip3 install xlsxwriter
+#import xlsxwriter # pip3 install xlsxwriter
 import pymysql # pip3 install pymysql 
 from flask import Flask
 from flask import jsonify
+from flask import request
 import json
 
 app = Flask(__name__)
 
-@app.route('/')
+#methods=['POST']
+
+@app.route('/' )
 def BotFlask():
 
-    #busca = input("Digite o nome do produto: ")
-    busca = ('batman')
+    #busca = recebe dados do front
+
+    if request.method == 'POST':
+        # Coletando o valor enviado de Axios e decodificando.
+        # Valor enviado pelo Axios é do tipo bytes.
+        busca = json.loads(request.data)
+
+    busca = ('marvel')
+    
     link = ('https://www.amazon.com.br/s?k=ProdutoPesquisado&__mk_pt_BR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&ref=nb_sb_noss')
     url = link.replace("ProdutoPesquisado",busca.strip())
     res = requests.get(url, headers={'user-agent': 'glados'})
@@ -109,7 +119,7 @@ def BotFlask():
 
                 connection = pymysql.connect(host="localhost", user="root", passwd="", database="glados")
                 cursor = connection.cursor()
-                insert1 = "INSERT INTO produtos_test(nome, categoria, preco_cheio, preco_desconto, porcentagem_desconto, site, disponibilidade) VALUES ('{}', '{}', {}, {}, {}, '{}', '{}');".format(nome, cat, fup, price, desconto, dominio, disp)
+                insert1 = "INSERT INTO produtos (nome, categoria, preco_cheio, preco_desconto, porcentagem_desconto, site, disponibilidade) VALUES ('{}', '{}', {}, {}, {}, '{}', '{}');".format(nome, cat, fup, price, desconto, dominio, disp)
                 #print("Código SQL para consulta: ")
                 #print(insert1)
                 #print()
@@ -122,6 +132,7 @@ def BotFlask():
 
     doc = lxml.html.fromstring(res.content)
     corpo = doc.xpath('//*[@class="sg-row"]')[0]
+
     separador = "\n"
     link_produto = corpo.xpath('//*[@id="search"]/div[1]/div[2]/div/span[4]/div[1]/div[*]/div/span/div/div/div[2]/div[2]/div/div[1]/div/div/div[1]/h2/a/@href')
     link_site = separador.join(link_produto)
@@ -150,11 +161,13 @@ def BotFlask():
     #:param conn: the Connection object
     #:return:
         cur = conn.cursor()
-        cur.execute("SELECT id, nome, categoria, preco_cheio, preco_desconto, porcentagem_desconto, site, disponibilidade, data_consulta FROM produtos_test")
+        cur.execute("SELECT DISTINCT id, nome, categoria, preco_cheio, preco_desconto, porcentagem_desconto, site, disponibilidade, data_consulta FROM produtos where nome like '%Batman%'")#adicionar a variavel busca aqui
 
         rows = cur.fetchall()
 
         lista = []
+        dic = {}
+        dic["produtos"] = lista
         for row in rows:
             ad = {}
             ad.update({'id': row[0]})
@@ -172,12 +185,10 @@ def BotFlask():
         #print(json.dumps(lista))
         conn.commit()
         conn.close()
-        return(lista)
+        return(dic)
 
-    conn = pymysql.connect(host="localhost", user="root", passwd="", database="glados")             
-    
+    conn = pymysql.connect(host="localhost", user="root", passwd="", database="glados")           
     plist = select_all(conn)
-    
     return jsonify(plist)
     
 
