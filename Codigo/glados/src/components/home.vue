@@ -1,3 +1,4 @@
+
 <template>
 	<div id="home">
     <div style="height:auto; width:100%;">
@@ -8,60 +9,49 @@
 		</div>
 		<br>
 		<div style="text-align: center;">
-			<div class="container">
-				<div class="produto-a"></div>
-				<div class="produto-b"></div>
-				<div class="produto-a"></div>
+			<div class="container" id="conteudo">
+			{{ info }}
 			</div>
 		</div>
+		
+		
 	</div>
 	
-    <div class="promo-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <div class="single-promo promo1">
-                        <i class="fa fa-refresh"></i>
-                        <p>Texto1</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="single-promo promo2">
-                        <i class="fa fa-truck"></i>
-                        <p>Texto2</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="single-promo promo3">
-                        <i class="fa fa-lock"></i>
-                        <p>Texto3</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="single-promo promo4">
-                        <i class="fa fa-gift"></i>
-                        <p>Texto4</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- End promo area -->
-    
 
-
-	</div>
+</div>
 </template>
 
 <script>
-export default {
-  name: 'home',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
-}
 
+import Vue from 'vue'
+import axios from 'axios'
+import $ from 'jquery'
+
+		export default {
+		  name: 'home',
+		  data () {
+			return {
+			  msg: 'Welcome to Your Vue.js App'
+			}
+		  },
+		  mounted (){
+		  axios
+			.get('http://localhost:8080')
+			.then(response => {
+			this.info = response.produto.bpi
+			})
+			.catch(error => {
+			console.log(error)
+			this.errored = true
+			})
+			.finally(() => this.loading = false)
+			const a = require('../teste.json');
+			/*for(let i = 0; i < a.produto.length; i++){
+			console.log(a.produto[i].nome);
+			}*/
+	}
+	}
+		
 </script>
 
 <style>
@@ -86,5 +76,25 @@ export default {
 	-webkit-box-shadow: 0px 17px 40px 2px rgba(39,166,216,1);
 	-moz-box-shadow: 0px 17px 40px 2px rgba(39,166,216,1);
 	box-shadow: 0px 17px 40px 2px rgba(39,166,216,1);
+}
+.titulo{
+	margin-top:40px;
+	height:auto;
+	width:80%;
+	border-radius:10px;
+	-webkit-box-shadow: 0px 17px 40px 2px rgba(39,166,216,1);
+	-moz-box-shadow: 0px 17px 40px 2px rgba(39,166,216,1);
+	box-shadow: 0px 17px 40px 2px rgba(39,166,216,1);
+	margin-left:auto;
+	margin-right:auto;
+	font-size:18px;
+}
+.img_product{
+	margin-top:40px;
+}
+.img-generic{
+	height:auto;
+	width:auto;
+	max-height: 150px;
 }
 </style>

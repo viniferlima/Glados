@@ -45,16 +45,11 @@
 							<ul class="nav navbar-nav">
 								<li class="active"><a href="/#/">Home</a></li>
 								<li><a href="#">Produtos</a></li>
+								<li><a href="https://gitlab.com/omnitron/glados">Sobre nós <img src="./src/img/git.png" class="img_link"></a></li>
 								<li>
 									<div style="width:450px; margin-left:50%;">
 										<input type="text" class="form-control" placeholder="O que deseja procurar?" style="width: 100%;">
 									</div>
-								</li>
-								
-							</ul>
-							<ul>
-								<li>
-									<a href="#" class="myButton">Pesquisar</a>
 								</li>
 							</ul>
 						</div>  
@@ -103,29 +98,7 @@ li {
 a {
   color: #42b983;
 }
-.myButton{
-top: 31.3%;
-float: right;
-position: absolute;
-box-shadow:inset 0px 1px 0px 0px #dcecfb;
-background:linear-gradient(to bottom, #bddbfa 5%, #80b5ea 100%);
-background-color:#bddbfa;
-border-radius:6px;
-border:1px solid #84bbf3;
-display:inline-block;
-cursor:pointer;
-color:#ffffff;
-font-family: Helvetica;
-font-size:14px;
-font-weight:bold;
-padding:6px 24px;
-text-decoration:none;
-text-shadow:0px 1px 0px #528ecc;
+.img_link{
+  max-height:18px;
 }
-.myButton:hover {
-	background:linear-gradient(to bottom, #80b5ea 5%, #bddbfa 100%);
-	background-color:#80b5ea;
-}
-
-
 </style>

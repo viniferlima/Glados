@@ -1,0 +1,37 @@
+{
+   "produto": [
+       {
+        "categoria": "Livros",
+        "data_consulta": "Fri, 18 Oct 2019 17:12:32 GMT",
+        "disponibilidade": "Em estoque.",
+        "id": 1,
+        "nome": "Batman - O Longo Dia das Bruxas - Edição Definitiva",
+        "porcentagem_desconto": 30.49,
+        "preco_cheio": 99.0,
+        "preco_desconto": 68.81,
+        "site": "Amazon"
+       },
+       {
+        "categoria": "Livros",
+        "data_consulta": "Fri, 18 Oct 2019 17:12:32 GMT",
+        "disponibilidade": "Em estoque.",
+        "id": 2,
+        "nome": "Batman - O Longo Dia das Bruxas - Edição Definitiva",
+        "porcentagem_desconto": 30.49,
+        "preco_cheio": 99.0,
+        "preco_desconto": 68.81,
+        "site": "Amazon"
+       },
+       {
+        "categoria": "Livros",
+        "data_consulta": "Fri, 18 Oct 2019 17:12:32 GMT",
+        "disponibilidade": "Em estoque.",
+        "id": 3,
+        "nome": "Batman - O Longo Dia das Bruxas - Edição Definitiva",
+        "porcentagem_desconto": 30.49,
+        "preco_cheio": 99.0,
+        "preco_desconto": 68.81,
+        "site": "Amazon"
+       }
+   ]
+}

@@ -25,7 +25,10 @@
     "cli": "^1.0.1",
     "clie": "^0.2.0",
     "vue": "^2.6.10",
-    "vue-owl-carousel": "^2.0.3"
+    "vue-axios": "^2.1.5",
+    "vue-cli": "^2.9.6",
+    "vue-owl-carousel": "^2.0.3",
+    "vue-resource": "^1.5.1"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
