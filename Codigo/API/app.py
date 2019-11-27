@@ -26,7 +26,7 @@ def BotFlask():
         # Valor enviado pelo Axios é do tipo bytes.
         busca = json.loads(request.data)
 
-    busca = ('marvel')
+    busca = ('luke')
     
     link = ('https://www.amazon.com.br/s?k=ProdutoPesquisado&__mk_pt_BR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&ref=nb_sb_noss')
     url = link.replace("ProdutoPesquisado",busca.strip())
@@ -131,6 +131,7 @@ def BotFlask():
 
 
     doc = lxml.html.fromstring(res.content)
+
     corpo = doc.xpath('//*[@class="sg-row"]')[0]
 
     separador = "\n"
@@ -189,7 +190,12 @@ def BotFlask():
 
     conn = pymysql.connect(host="localhost", user="root", passwd="", database="glados")           
     plist = select_all(conn)
-    return jsonify(plist)
+    j = 0
+    while(j <= len(plist{[j]})):
+        f = open("../glados/src/teste.json", "a")
+        f.write(jsonify(plist[]))
+        f.close()
+    #return jsonify(plist)
     
 
 
