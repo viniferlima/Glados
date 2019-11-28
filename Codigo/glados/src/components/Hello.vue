@@ -47,24 +47,15 @@
 								<li><a href="#">Produtos</a></li>
 								<li><a href="https://gitlab.com/omnitron/glados">Sobre nós <img src="./src/img/git.png" class="img_link"></a></li>
 								<li>
-									<div style="width:350px; margin-left:50%;">
-									<div style="float:left;">
+									<div style="width:450px; margin-left:50%;">
 										<input type="text" class="form-control" placeholder="O que deseja procurar?" style="width: 100%;">
 									</div>
-									<div style="float:left; margin-left:10px;">
-										<button id="buscar" type="button" class="btn btn-info btn-block regular-link" > Buscar </button>
-									</div>
-									</div>
-								</li>
-								<li>
-								
 								</li>
 							</ul>
 						</div>  
 					</div>
 				</div>
 			</div> <!-- End mainmenu area -->
-			<br>
 	</div>
 	
 </template>
@@ -110,5 +101,4 @@ a {
 .img_link{
   max-height:18px;
 }
-
 </style>

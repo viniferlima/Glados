@@ -45,8 +45,8 @@ import $ from 'jquery'
 			this.errored = true
 			})
 			.finally(() => this.loading = false)
-			const a = require('../teste.json');
-			/*for(let i = 0; i < a.produto.length; i++){
+			/*const a = require('../src/teste.json');
+			for(let i = 0; i < a.produto.length; i++){
 			console.log(a.produto[i].nome);
 			}*/
 	}
