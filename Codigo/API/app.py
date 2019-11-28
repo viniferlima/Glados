@@ -24,7 +24,7 @@ def BotFlask():
         # Valor enviado pelo Axios é do tipo bytes.
         busca = json.loads(request.data)
 
-    busca = ('Batman')
+    busca = input("Pesquisar por: ")
     
     link = ('https://www.amazon.com.br/s?k=ProdutoPesquisado&__mk_pt_BR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&ref=nb_sb_noss')
     url = link.replace("ProdutoPesquisado",busca.strip())
