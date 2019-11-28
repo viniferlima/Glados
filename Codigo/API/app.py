@@ -14,19 +14,17 @@ import json
 
 app = Flask(__name__)
 
-#methods=['POST']
+#methods=['GET', 'POST']
 
-@app.route('/' )
+@app.route('/')
 def BotFlask():
-
-    #busca = recebe dados do front
 
     if request.method == 'POST':
         # Coletando o valor enviado de Axios e decodificando.
         # Valor enviado pelo Axios é do tipo bytes.
         busca = json.loads(request.data)
 
-    busca = ('luke')
+    busca = ('Batman')
     
     link = ('https://www.amazon.com.br/s?k=ProdutoPesquisado&__mk_pt_BR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&ref=nb_sb_noss')
     url = link.replace("ProdutoPesquisado",busca.strip())
@@ -120,9 +118,6 @@ def BotFlask():
                 connection = pymysql.connect(host="localhost", user="root", passwd="", database="glados")
                 cursor = connection.cursor()
                 insert1 = "INSERT INTO produtos (nome, categoria, preco_cheio, preco_desconto, porcentagem_desconto, site, disponibilidade) VALUES ('{}', '{}', {}, {}, {}, '{}', '{}');".format(nome, cat, fup, price, desconto, dominio, disp)
-                #print("Código SQL para consulta: ")
-                #print(insert1)
-                #print()
                 cursor.execute(insert1)
                 connection.commit()
                 connection.close()
@@ -190,12 +185,7 @@ def BotFlask():
 
     conn = pymysql.connect(host="localhost", user="root", passwd="", database="glados")           
     plist = select_all(conn)
-    j = 0
-    while(j <= len(plist{[j]})):
-        f = open("../glados/src/teste.json", "a")
-        f.write(jsonify(plist[]))
-        f.close()
-    #return jsonify(plist)
+    return jsonify(plist)
     
 
 
